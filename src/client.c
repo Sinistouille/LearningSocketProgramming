@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <winsock2.h>
 #include <unistd.h>
-#include "src/packet.h"
+#include "packet/packet.h"
 
 
 int main()
