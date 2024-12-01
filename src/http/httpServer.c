@@ -17,6 +17,7 @@ int main() {
         return 1;
     }
 
+    mkdir("./logs");
     FILE *logs = fopen("./logs/logs.txt", "w");
     if(logs == NULL) {
         printf("Cannot open logs file\n");
@@ -89,8 +90,6 @@ int main() {
             // Timeout: check for shutdown signal
             continue;
         }
-
-
         SOCKET clientSocket = accept(serverSocket, NULL, NULL);
         if (clientSocket == INVALID_SOCKET) {
             printf("Erreur lors de l'acceptation : %d\n", WSAGetLastError());  // For Windows; use `errno` on Linux.
