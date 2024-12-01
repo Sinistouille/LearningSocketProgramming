@@ -4,11 +4,10 @@
 #include <time.h>
 #include <unistd.h>
 #include <signal.h>
-#include "../packet/packet.h"
 
 volatile sig_atomic_t stop;
 
-int sendHttpResponse(SOCKET socket, const char *html);
+int sendHttpResponse(SOCKET socket, const char *html, FILE *logs);
 
 BOOL WINAPI signalHandler(DWORD signal);
 
@@ -18,19 +17,26 @@ int main() {
         return 1;
     }
 
+    FILE *logs = fopen("./logs/logs.txt", "w");
+    if(logs == NULL) {
+        printf("Cannot open logs file\n");
+        return -1;
+    }
+    time_t t;
+    time(&t);
+    fprintf(logs, "Starting server at %s\n", ctime(&t));
     //SERVEUR
     WSADATA data;
     WSAStartup(MAKEWORD(2, 2), &data);
 
     printf("Starting serveur Pid : %d\n", getpid());
+    fprintf(logs,"Starting serveur Pid : %d\n", getpid());
     SOCKET serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == INVALID_SOCKET) {
         printf("Error creating socket : %d \n", WSAGetLastError());;
         return 0;
     }
-    printf("Socket %llu\n", serverSocket);
-
-    char ip[] = "192.168.1.143";
+    char ip[] = "172.16.5.33";
     int port = 5000;
 
     struct sockaddr_in servar_addr;
@@ -42,25 +48,56 @@ int main() {
         printf("Erreur connection : %c \n", WSAGetLastError());
         return -1;
     }
-    printf("Socket bind to the adress %s:%d\n", ip, port);
+    printf("Socket %llu bind to the adress %s:%d\n",serverSocket, ip, port);
+    fprintf(logs,"Socket %llu bind to the adress %s:%d\n",serverSocket, ip, port);
+    FILE *fHtml = fopen("./pages/index.html","r");
+    if(fHtml == NULL) {
+        printf("Error opening file\n");
+        return -1;
+    }
 
-    const char html[] =
-        "<!DOCTYPE html>"
-        "<html>"
-        "<body>"
-        "<h1>Hello world</h1>"
-        "</body>"
-        "</html>";
+    char *html = calloc(1024, 1);
+    char line[50];
+    while(fgets(line,50, fHtml)) {
+        //printf("File : %s", line);
+        strcat(html, line);
+    }
+    fprintf(logs,"HTML File :\n %s",html);
 
-    while(!stop) {
-        listen(serverSocket, 5);
+    listen(serverSocket, 10);
+    fprintf(logs, "Starting listening on socket : %llu", serverSocket);
+
+    fd_set readfds;
+    struct timeval timeout;
+
+    while (!stop) {
+        FD_ZERO(&readfds);
+        FD_SET(serverSocket, &readfds);
+
+        timeout.tv_sec = 0;  // Wait 1 second
+        timeout.tv_usec = 50000;
+
+        // Use select to wait for a connection or timeout
+        int activity = select(0, &readfds, NULL, NULL, &timeout);
+
+        if (activity == SOCKET_ERROR) {
+            printf("Select error: %d\n", WSAGetLastError());
+            break;
+        }
+
+        if (activity == 0) {
+            // Timeout: check for shutdown signal
+            continue;
+        }
+
+
         SOCKET clientSocket = accept(serverSocket, NULL, NULL);
         if (clientSocket == INVALID_SOCKET) {
             printf("Erreur lors de l'acceptation : %d\n", WSAGetLastError());  // For Windows; use `errno` on Linux.
             break;
         }
         printf("\n\nSocket connecte %llu!\n\n", clientSocket);
-
+        fprintf(logs,"\n\nSocket connecte %llu!\n\n", clientSocket);
         int bytes = 0;
         char *httpRequest = (char *) calloc(4,1);
         if (!httpRequest) {
@@ -69,7 +106,7 @@ int main() {
         }
         while (1) {
             char *buff = (char *) calloc(10, 1);
-            memset(buff,0 ,10);
+            memset(buff,0 ,9);
 
             const int bytesReceived = recv(clientSocket, buff, 9, 0);
 
@@ -97,9 +134,11 @@ int main() {
             }
             free(buff);
         }
+        printf("Received %d Bytes\n", bytes);
+        fprintf(logs,"Receiveid %d bytes from %llu\nRequest :\n%s", bytes, clientSocket, httpRequest);
         printf("%s", httpRequest);
         free(httpRequest);
-        if (sendHttpResponse(clientSocket, html) == SOCKET_ERROR) {
+        if (sendHttpResponse(clientSocket, html, logs) == SOCKET_ERROR) {
             printf("Error sending HTTP response: %d\n", WSAGetLastError());
             break;
         }
@@ -107,17 +146,21 @@ int main() {
         // Close client socket
         closesocket(clientSocket);
         printf("Client disconnected.\n");
+        fprintf(logs,"Client %llu disconnected.\n", clientSocket);
     }
-
+    fclose(fHtml);
+    free(html);
     shutdown(serverSocket, 0);
 
     closesocket(serverSocket);
     WSACleanup();
     printf("Finishing & closing server \n");
+    fprintf(logs,"Shutdown server : closing his socket %llu\n", serverSocket);
+    fclose(logs);
     return 0;
 }
 
-int sendHttpResponse(SOCKET socket, const char *html) {
+int sendHttpResponse(SOCKET socket, const char *html, FILE *logs) {
 
     int headerSize = snprintf(NULL, 0,"HTTP/1.1 200 OK\r\n"
     "Content-Type: text/html\r\n"
@@ -136,7 +179,8 @@ int sendHttpResponse(SOCKET socket, const char *html) {
 
     int sendResult = send(socket, httpResponse, httpResponseSize, 0);
 
-    printf("Sent HTTP response: \n%s\n", "");//httpResponse);
+    //printf("Sent HTTP response: \n%s\n", httpResponse);
+    fprintf(logs,"Sent HTTP response: \n%s\n\n", httpResponse);
     free(httpResponse);
 
     return sendResult;
