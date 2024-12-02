@@ -37,7 +37,7 @@ int main() {
         printf("Error creating socket : %d \n", WSAGetLastError());;
         return 0;
     }
-    char ip[] = "172.16.5.33";
+    char ip[] = "172.17.62.245";
     int port = 5000;
 
     struct sockaddr_in servar_addr;
@@ -70,7 +70,6 @@ int main() {
 
     fd_set readfds;
     struct timeval timeout;
-
     while (!stop) {
         FD_ZERO(&readfds);
         FD_SET(serverSocket, &readfds);
@@ -103,15 +102,43 @@ int main() {
             printf("Memory allocation failed\n");
             continue;
         }
+        time_t t1;
+        time_t t2;
+        time(&t1);
         while (1) {
-            char *buff = (char *) calloc(10, 1);
-            memset(buff,0 ,9);
+            FD_ZERO(&readfds);
+            FD_SET(serverSocket, &readfds);
 
-            const int bytesReceived = recv(clientSocket, buff, 9, 0);
+            timeout.tv_sec = 0;  // Wait 1 second
+            timeout.tv_usec = 50000;
+
+            // Use select to wait for a connection or timeout
+            activity = select(0, &readfds, NULL, NULL, &timeout);
+
+            if (activity == SOCKET_ERROR) {
+                printf("Select error: %d\n", WSAGetLastError());
+                break;
+            }
+
+            if (activity == 0) {
+                printf("No Activity detected while connected with socket %llu\n", clientSocket);
+                time(&t2);
+                if(difftime(t2, t1) > 5) {
+                    printf("Difftime : %f\n", difftime(t2, t1));
+                    fprintf(logs,"Breaked the connection with socket %llu due to max. time elapsed\n", clientSocket);
+                    break;
+                }
+                // Timeout: check for shutdown signal
+            }
+            char *buff = (char *) calloc(100, 1);
+            memset(buff,0 ,99);
+
+            const int bytesReceived = recv(clientSocket, buff, 99, 0);
 
             bytes += bytesReceived;
             printf("Received %d bytes\n", bytesReceived);
             if (bytesReceived > 0) {
+                time(&t1);
                 bytes += bytesReceived;
                 httpRequest = (char *) realloc(httpRequest, bytes);
 

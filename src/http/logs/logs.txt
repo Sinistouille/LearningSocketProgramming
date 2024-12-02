@@ -1,7 +1,7 @@
-Starting server at Sun Dec 01 22:51:03 2024
+Starting server at Mon Dec 02 14:43:51 2024
 
-Starting serveur Pid : 10428
-Socket 208 bind to the adress 172.16.5.33:5000
+Starting serveur Pid : 21164
+Socket 204 bind to the adress 172.17.62.245:5000
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -14,14 +14,14 @@ HTML File :
     Hello world
 </h1>
 </body>
-</html>Starting listening on socket : 208
+</html>Starting listening on socket : 204
 
-Socket connecte 72!
+Socket connecte 216!
 
-Receiveid 734 bytes from 72
+Receiveid 738 bytes from 216
 Request :
 GET / HTTP/1.1
-Host: 172.16.5.33:5000
+Host: 172.17.62.245:5000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
@@ -48,15 +48,15 @@ Content-Length: 156
 </body>
 </html>
 
-Client 72 disconnected.
+Client 216 disconnected.
 
 
-Socket connecte 212!
+Socket connecte 216!
 
-Receiveid 734 bytes from 212
+Receiveid 738 bytes from 216
 Request :
 GET / HTTP/1.1
-Host: 172.16.5.33:5000
+Host: 172.17.62.245:5000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
@@ -83,5 +83,5 @@ Content-Length: 156
 </body>
 </html>
 
-Client 212 disconnected.
-Shutdown server : closing his socket 208
+Client 216 disconnected.
+Shutdown server : closing his socket 204
