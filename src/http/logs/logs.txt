@@ -1,7 +1,23 @@
-Starting server at Mon Dec 02 14:43:51 2024
+Starting server at Mon Dec 02 21:11:52 2024
 
-Starting serveur Pid : 21164
-Socket 204 bind to the adress 172.17.62.245:5000
+Starting serveur Pid : 13736
+Socket 216 bind to the adress 172.16.5.33:5000
+Starting listening on socket : 216
+
+Socket connecte 200!
+
+Receiveid 367 bytes from 200
+Request :
+GET / HTTP/1.1
+Host: 172.16.5.33:5000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -11,29 +27,139 @@ HTML File :
 </header>
 <body>
 <h1>
-    Hello world
+    Hello world !
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
 </h1>
 </body>
-</html>Starting listening on socket : 204
-
-Socket connecte 216!
-
-Receiveid 738 bytes from 216
-Request :
-GET / HTTP/1.1
-Host: 172.17.62.245:5000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
-
-Sent HTTP response: 
+</html>Sent HTTP response: 
 HTTP/1.1 200 OK
 Content-Type: text/html
-Content-Length: 156 
+Content-Length: 1670 
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -43,32 +169,296 @@ Content-Length: 156
 </header>
 <body>
 <h1>
-    Hello world
+    Hello world !
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
 </h1>
 </body>
 </html>
 
-Client 216 disconnected.
+Client 200 disconnected.
 
 
-Socket connecte 216!
+Socket connecte 224!
 
-Receiveid 738 bytes from 216
+Receiveid 386 bytes from 224
 Request :
-GET / HTTP/1.1
-Host: 172.17.62.245:5000
+GET /favicon.ico HTTP/1.1
+Host: 172.16.5.33:5000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
 Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
+Referer: http://172.16.5.33:5000/
+Priority: u=6
 
-Sent HTTP response: 
+HTML File :
+ <!DOCTYPE html>
+<html lang="fr">
+<header>
+    <meta charset="UTF-8">
+    <title>MyApache</title>
+</header>
+<body>
+<h1>
+    Hello world !
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+</h1>
+</body>
+</html>Sent HTTP response: 
 HTTP/1.1 200 OK
 Content-Type: text/html
-Content-Length: 156 
+Content-Length: 1670 
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -78,10 +468,136 @@ Content-Length: 156
 </header>
 <body>
 <h1>
-    Hello world
+    Hello world !
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
+    AAAAAAA
+    BBBBBBB
 </h1>
 </body>
 </html>
 
-Client 216 disconnected.
-Shutdown server : closing his socket 204
+Client 224 disconnected.
+Shutdown server : closing his socket 216
