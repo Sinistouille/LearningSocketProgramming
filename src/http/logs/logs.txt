@@ -8,16 +8,26 @@ Socket connecte 200!
 
 Receiveid 367 bytes from 200
 Request :
-GET / HTTP/1.1
-Host: 172.16.5.33:5000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
-
+GET / HTTP/1.1
+
+Host: 172.16.5.33:5000
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+
+Accept-Encoding: gzip, deflate
+
+Connection: keep-alive
+
+Upgrade-Insecure-Requests: 1
+
+Priority: u=0, i
+
+
+
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -157,10 +167,14 @@ HTML File :
 </h1>
 </body>
 </html>Sent HTTP response: 
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 1670 
-
+HTTP/1.1 200 OK
+
+Content-Type: text/html
+
+Content-Length: 1670 
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <header>
@@ -307,16 +321,26 @@ Socket connecte 224!
 
 Receiveid 386 bytes from 224
 Request :
-GET /favicon.ico HTTP/1.1
-Host: 172.16.5.33:5000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Referer: http://172.16.5.33:5000/
-Priority: u=6
-
+GET /favicon.ico HTTP/1.1
+
+Host: 172.16.5.33:5000
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
+
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+
+Accept-Encoding: gzip, deflate
+
+Connection: keep-alive
+
+Referer: http://172.16.5.33:5000/
+
+Priority: u=6
+
+
+
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -456,10 +480,14 @@ HTML File :
 </h1>
 </body>
 </html>Sent HTTP response: 
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 1670 
-
+HTTP/1.1 200 OK
+
+Content-Type: text/html
+
+Content-Length: 1670 
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <header>

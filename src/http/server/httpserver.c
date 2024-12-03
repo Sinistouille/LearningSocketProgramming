@@ -12,44 +12,29 @@ int sendHttpResponse(SOCKET socket, FILE *logs);
 
 BOOL WINAPI signalHandler(DWORD signal);
 
-int main() {
+int server(FILE *logs, char *ip, int port) {
     if (!SetConsoleCtrlHandler(signalHandler, TRUE)) {
         printf("\nERROR: Could not set control handler");
         return 1;
     }
-
-    mkdir("./logs");
-    FILE *logs = fopen("./logs/logs.txt", "w");
-    if(logs == NULL) {
-        printf("Cannot open logs file\n");
-        return -1;
-    }
-    time_t t;
-    time(&t);
-    fprintf(logs, "Starting server at %s\n", ctime(&t));
 
 
     //SERVEUR
     WSADATA data;
     WSAStartup(MAKEWORD(2, 2), &data);
 
-    printf("Starting serveur Pid : %d\n", getpid());
-    fprintf(logs,"Starting serveur Pid : %d\n", getpid());
     SOCKET serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == INVALID_SOCKET) {
-        printf("Error creating socket : %d \n", WSAGetLastError());;
+        printf("Error creating socket : %d \n", WSAGetLastError());
         return 0;
     }
-
-    char ip[] = "172.16.5.33";
-    int port = 5000;
 
     struct sockaddr_in servar_addr;
     servar_addr.sin_addr.s_addr = inet_addr(ip);
     servar_addr.sin_family = AF_INET;
-    servar_addr.sin_port = htons(5000);
+    servar_addr.sin_port = htons(port);
     if (bind(serverSocket, (struct sockaddr *) &servar_addr, sizeof(servar_addr)) == SOCKET_ERROR) {
-        printf("Erreur connection : %c \n", WSAGetLastError());
+        printf("Erreur connection : %d \n", WSAGetLastError());
         return -1;
     }
     printf("Socket %llu bind to the adress %s:%d\n",serverSocket, ip, port);
@@ -60,6 +45,7 @@ int main() {
 
     fd_set readfds;
     struct timeval timeout;
+
     while (!stop) {
         FD_ZERO(&readfds);
         FD_SET(serverSocket, &readfds);
@@ -84,17 +70,22 @@ int main() {
             printf("Erreur lors de l'acceptation : %d\n", WSAGetLastError());  // For Windows; use `errno` on Linux.
             break;
         }
-        printf("\n\nSocket connecte %llu!\n\n", clientSocket);
-        fprintf(logs,"\n\nSocket connecte %llu!\n\n", clientSocket);
+        struct sockaddr clientAddr;
+        int len;
+        getpeername(clientSocket, &clientAddr, &len);
+        printf("\n\nSocket client %llu connecte %s!,\n\n", clientSocket, inet_ntoa(((struct sockaddr_in *) &clientAddr)->sin_addr));
+        fprintf(logs,"\n\nSocket client %llu connecte %s!,\n\n", clientSocket, inet_ntoa(((struct sockaddr_in *) &clientAddr)->sin_addr));
         int bytes = 0;
         char *httpRequest = (char *) calloc(4,1);
         if (!httpRequest) {
             printf("Memory allocation failed\n");
             continue;
         }
+        time_t t;
         time_t t1;
         time_t t2;
         time(&t1);
+        time(&t);
         while (1) {
             FD_ZERO(&readfds);
             FD_SET(serverSocket, &readfds);
@@ -111,15 +102,19 @@ int main() {
             }
 
             if (activity == 0) {
-                printf("No Activity detected while connected with socket %llu\n", clientSocket);
+                //printf("No Activity detected while connected with socket %llu\n", clientSocket);
                 time(&t2);
                 int maxtime = 5;
                 if(difftime(t2, t1) > maxtime) {
                     printf("Difftime : %f\n", difftime(t2, t1));
-                    fprintf(logs,"Breaked the connection with socket %llu due to max. time elapsed (%ds)\n", clientSocket, maxtime);
+                    fprintf(logs,"Breaked the connection with socket %llu due to no response for (%ds)\n", clientSocket, maxtime);
                     break;
                 }
                 // Timeout: check for shutdown signal
+            }
+            if(difftime(t2,t) > 10) {
+                printf("Difftime : %f\n", difftime(t2, t));
+                fprintf(logs, "Breaked the connection with socket %llu due to max. time elapsed %ds\n", clientSocket, 10);
             }
             int size = 100;
             char *buff = (char *) calloc(size + 1, 1);
@@ -135,6 +130,7 @@ int main() {
 
                 strncat(httpRequest, buff, bytesReceived);
                 if (strstr(httpRequest, "\r\n\r\n") != NULL) {
+                    printf("%s\n", httpRequest);
                     printf("\nEnd of HTTP request\n");
                     free(buff);
                     break;
@@ -151,9 +147,8 @@ int main() {
             }
             free(buff);
         }
-        printf("Received %d Bytes\n", bytes);
+        //printf("Received %d Bytes\n", bytes);
         fprintf(logs,"Receiveid %d bytes from %llu\nRequest :\n%s", bytes, clientSocket, httpRequest);
-        printf("%s", httpRequest);
         free(httpRequest);
         if (sendHttpResponse(clientSocket, logs) == SOCKET_ERROR) {
             printf("Error sending HTTP response: %d\n", WSAGetLastError());
@@ -216,8 +211,10 @@ int sendHttpResponse(SOCKET socket, FILE *logs) {
 }
 
 BOOL WINAPI signalHandler(DWORD signal) {
-    if (signal == CTRL_C_EVENT)
-        stop = 1;
     printf("Signal intercepted\n");
+    if (signal == CTRL_C_EVENT) {
+        stop = 1;
+        printf("Shuting down server : Ctrl+C action\n");
+    }
     return TRUE;
 }

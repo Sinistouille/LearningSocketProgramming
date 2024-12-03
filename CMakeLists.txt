@@ -10,4 +10,6 @@ add_executable(server src/server.c
 add_executable(client src/client.c
         src/packet/packet.h)
 
-add_executable(serverhttp src/http/httpServer.c src/packet/packet.h src/http/pages/index.html)
+link_directories(src/http/server/)
+add_executable(serverhttp src/http/main.c src/packet/packet.h src/http/server/httpserver.h
+         src/http/server/httpServer.c)
