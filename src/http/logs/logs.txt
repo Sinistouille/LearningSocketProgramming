@@ -1,33 +1,22 @@
-Starting server at Mon Dec 02 21:11:52 2024
+Starting server at Wed Dec 04 00:16:51 2024
+, PID : 21240
+Socket 220 bind to the adress 172.16.5.33:8080
+Starting listening on socket : 220
 
-Starting serveur Pid : 13736
-Socket 216 bind to the adress 172.16.5.33:5000
-Starting listening on socket : 216
+Socket client 76 connecte 172.16.5.33!,
 
-Socket connecte 200!
-
-Receiveid 367 bytes from 200
+Receiveid 367 bytes from 76
 Request :
-GET / HTTP/1.1
-
-Host: 172.16.5.33:5000
-
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-
-Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-
-Accept-Encoding: gzip, deflate
-
-Connection: keep-alive
-
-Upgrade-Insecure-Requests: 1
-
-Priority: u=0, i
-
-
-
+GET / HTTP/1.1
+Host: 172.16.5.33:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -37,144 +26,15 @@ HTML File :
 </header>
 <body>
 <h1>
-    Hello world !
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
+    Bienvenue sur MyApache
 </h1>
+<p>Hello World !</p>
 </body>
 </html>Sent HTTP response: 
-HTTP/1.1 200 OK
-
-Content-Type: text/html
-
-Content-Length: 1670 
-
-
-
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 188 
+
 <!DOCTYPE html>
 <html lang="fr">
 <header>
@@ -183,164 +43,29 @@ Content-Length: 1670
 </header>
 <body>
 <h1>
-    Hello world !
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
+    Bienvenue sur MyApache
 </h1>
+<p>Hello World !</p>
 </body>
 </html>
 
-Client 200 disconnected.
+Client 76 disconnected.
 
 
-Socket connecte 224!
+Socket client 224 connecte 172.16.5.33!,
 
 Receiveid 386 bytes from 224
 Request :
-GET /favicon.ico HTTP/1.1
-
-Host: 172.16.5.33:5000
-
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
-
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-
-Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-
-Accept-Encoding: gzip, deflate
-
-Connection: keep-alive
-
-Referer: http://172.16.5.33:5000/
-
-Priority: u=6
-
-
-
+GET /favicon.ico HTTP/1.1
+Host: 172.16.5.33:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://172.16.5.33:8080/
+Priority: u=6
+
 HTML File :
  <!DOCTYPE html>
 <html lang="fr">
@@ -350,144 +75,15 @@ HTML File :
 </header>
 <body>
 <h1>
-    Hello world !
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
+    Bienvenue sur MyApache
 </h1>
+<p>Hello World !</p>
 </body>
 </html>Sent HTTP response: 
-HTTP/1.1 200 OK
-
-Content-Type: text/html
-
-Content-Length: 1670 
-
-
-
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 188 
+
 <!DOCTYPE html>
 <html lang="fr">
 <header>
@@ -496,136 +92,11 @@ Content-Length: 1670
 </header>
 <body>
 <h1>
-    Hello world !
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
-    AAAAAAA
-    BBBBBBB
+    Bienvenue sur MyApache
 </h1>
+<p>Hello World !</p>
 </body>
 </html>
 
 Client 224 disconnected.
-Shutdown server : closing his socket 216
+Shutdown server : closing his socket 220
