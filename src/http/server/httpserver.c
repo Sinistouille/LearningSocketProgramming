@@ -13,15 +13,16 @@ int sendHttpResponse(SOCKET socket, FILE **logs);
 BOOL WINAPI signalHandler(DWORD signal);
 
 int server(FILE **logs, char *ip, int *port) {
+    stop = 0;
     if (!SetConsoleCtrlHandler(signalHandler, TRUE)) {
         printf("\nERROR: Could not set control handler");
         return 1;
     }
 
     printf("server");
-    printf("Adresse &logs: %p\n", &logs);
+    //printf("Adresse &logs: %p\n", &logs);
     printf("Adresse logs : %p\n", logs);
-    printf("Adresse *logs: %p\n", *logs);
+    printf("Adresse *logs : %p\n", *logs);
 
     //SERVEUR
     WSADATA data;
@@ -203,7 +204,7 @@ int sendHttpResponse(SOCKET socket, FILE **logs) {
     int sendResult = send(socket, httpResponse, httpResponseSize, 0);
 
     printf("sendHttpResponse");
-    printf("Adresse &logs: %p\n", &logs);
+    //printf("Adresse &logs: %p\n", &logs);
     printf("Adresse logs : %p\n", logs);
     printf("Adresse *logs: %p\n", *logs);
 

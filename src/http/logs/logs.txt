@@ -1,0 +1,10 @@
+Starting server at Wed Dec 04 17:23:38 2024
+PID : 22056
+Socket 208 bind to the adress 10.70.22.137:8080
+Starting listening on socket : 208Starting listening on socket : 208Shutdown server : closing his socket 208
+Socket 212 bind to the adress 10.70.22.137:8080
+Starting listening on socket : 212Starting listening on socket : 212Shutdown server : closing his socket 212
+Socket 196 bind to the adress 10.70.22.137:8080
+Starting listening on socket : 196Starting listening on socket : 196Shutdown server : closing his socket 196
+Socket 196 bind to the adress 10.70.22.137:8080
+Starting listening on socket : 196Starting listening on socket : 196Shutdown server : closing his socket 196

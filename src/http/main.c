@@ -10,15 +10,15 @@
 
 int getipfromConf(char *ip, int *port);
 
-int start(FILE *logs);
+int start(FILE **logs);
 
 int main() {
 
 	FILE *logs;
-	if(start(logs) == -1 || logs == NULL) {
+	if(start(&logs) == -1 || logs == NULL) {
 		return -1;
 	}
-	printf("main");
+	printf("\n");
 	printf("Adresse &logs: %p\n", &logs);
 	printf("Adresse logs : %p\n", logs);
 	char *ip = (char * ) calloc(19,1);
@@ -31,7 +31,7 @@ int main() {
 	int port = 0;
 
 	int close = 0;
-	while(!close){
+	while(close == 0){
 		if(getipfromConf(ip,&port) == -1) {
 			printf("Cannot open config file\n");
 			fprintf(logs,"Error while opening config file \n");
@@ -43,14 +43,16 @@ int main() {
 			printf("Erreur connection : %d \n", WSAGetLastError());
 			return -1;
 		}
-		char* input = calloc(4,1);
-		printf("Do you want to close the server ? (Y/N)\n");
-		fgets(input,4,stdin);
-		if(strcmp(input,"Y") == 0) {
+		char* input = calloc(2,1);
+		printf("Do you want to close the server ? Type (Y) for Yes, Anything else for No\n");
+		fgets(input,2,stdin);
+		if(strstr(input,"Y") != NULL) {
 			close = 1;
 		}
+		while(getchar() != '\n') {}
 		free(input);
 	}
+	printf("Closing processus\n");
 	fclose(logs);
 	free(ip);
 }
@@ -87,20 +89,20 @@ int getipfromConf(char *ip, int *port) {
 	return 0;
 }
 
-int start(FILE *logs) {
+int start(FILE **logs) {
 	mkdir("./logs");
-	logs = fopen("./logs/logs.txt", "w");
-	if(logs == NULL) {
+	*logs = fopen("./logs/logs.txt", "w");
+	if(*logs == NULL) {
 		printf("Cannot open logs file\n");
 		return -1;
 	}
-	printf("start");
-	printf("Adresse &logs: %p\n", &logs);
+	printf("start\n");
+	//printf("Adresse &logs: %p\n", &logs);
 	printf("Adresse logs : %p\n", logs);
-	//printf("Adresse *logs: %p\n", *logs);
+	printf("Adresse *logs: %p\n", *logs);
 	time_t t;
 	time(&t);
-	fprintf(logs, "Starting server at %sPID : %d\n", ctime(&t),getpid());
+	fprintf(*logs, "Starting server at %sPID : %d\n", ctime(&t),getpid());
 	printf("Starting server at %sPID : %d\n", ctime(&t),getpid());
 	return 0;
 }
