@@ -51,13 +51,16 @@ int main() {
 		//dinamically allocating space for the input
 		char* input = calloc(2,1);
 		printf("Do you want to close the server ? Type (Y) for Yes, Anything else for No\n");
-		fgets(input,2,stdin);
-		if(strstr(input,"Y") != NULL) {
-			close = 1;
+		if(fgets(input,2,stdin) == NULL) {
+			printf("No input detected");
+		}else {
+			if(strstr(input,"Y") != NULL) {
+				close = 1;
+			}
+			//clearing stdin from garbage
+			while (getchar() != '\n' && !feof(stdin)){};
+			free(input);
 		}
-		//clearing stdin from garbage
-		while(getchar() != '\n') {}
-		free(input);
 	}
 	printf("Closing processus\n");
 	fclose(logs);
@@ -89,7 +92,7 @@ int getipfromConf(char *ip, int *port) {
 	strncpy(portc,occ + 1, 5);
 	*port = atoi(portc);
 
-	printf("String line %s \nString ip : %s, String port %s, ATOI port %d\n", line, ip, portc, *port);
+	//printf("String line %s \nString ip : %s, String port %s, ATOI port %d\n", line, ip, portc, *port);
 
 	free(line);
 	free(portc);

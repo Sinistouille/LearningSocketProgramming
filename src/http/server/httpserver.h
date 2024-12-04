@@ -6,6 +6,6 @@
 #define HTTPSERVER_H
 #include <stdio.h>
 
-int server(FILE **logs, char *ip, int *port);
+int server(FILE **logs, char *ip, const int *port);
 
 #endif //HTTPSERVER_H

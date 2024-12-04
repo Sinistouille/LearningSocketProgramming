@@ -12,17 +12,17 @@ int sendHttpResponse(SOCKET socket, FILE **logs);
 
 BOOL WINAPI signalHandler(DWORD signal);
 
-int server(FILE **logs, char *ip, int *port) {
+int server(FILE **logs, char *ip, const int *port) {
     stop = 0;
     if (!SetConsoleCtrlHandler(signalHandler, TRUE)) {
         printf("\nERROR: Could not set control handler");
         return 1;
     }
 
-    printf("server");
-    //printf("Adresse &logs: %p\n", &logs);
-    printf("Adresse logs : %p\n", logs);
-    printf("Adresse *logs : %p\n", *logs);
+    // printf("server");
+    // printf("Adresse &logs: %p\n", &logs);
+    // printf("Adresse logs : %p\n", logs);
+    // printf("Adresse *logs : %p\n", *logs);
 
     //SERVEUR
     WSADATA data;
@@ -42,13 +42,12 @@ int server(FILE **logs, char *ip, int *port) {
     }
     printf("Socket %llu bind to the adress %s:%d\n",serverSocket, ip, *port);
     fprintf(*logs,"Socket %llu bind to the adress %s:%d\n",serverSocket, ip, *port);
-    fprintf(*logs, "Starting listening on socket : %llu", serverSocket);
 
     if(listen(serverSocket, 10) == -1) {
         return -1;
     }
-    fprintf(*logs, "Starting listening on socket : %llu", serverSocket);
-    printf("Starting listening on socket : %llu", serverSocket);
+    fprintf(*logs, "Starting listening on socket : %llu\n", serverSocket);
+    printf("Starting listening on socket : %llu\n", serverSocket);
     fd_set readfds;
     struct timeval timeout;
 
@@ -203,10 +202,10 @@ int sendHttpResponse(SOCKET socket, FILE **logs) {
 
     int sendResult = send(socket, httpResponse, httpResponseSize, 0);
 
-    printf("sendHttpResponse");
-    //printf("Adresse &logs: %p\n", &logs);
-    printf("Adresse logs : %p\n", logs);
-    printf("Adresse *logs: %p\n", *logs);
+    // printf("sendHttpResponse");
+    // printf("Adresse &logs: %p\n", &logs);
+    // printf("Adresse logs : %p\n", logs);
+    // printf("Adresse *logs: %p\n", *logs);
 
     printf("HTTP Response sent\n");
     fprintf(*logs,"Sent HTTP response: \n%s\n\n", httpResponse);
