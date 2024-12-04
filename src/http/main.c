@@ -10,34 +10,48 @@
 
 int getipfromConf(char *ip, int *port);
 
+int start(FILE *logs);
+
 int main() {
 
-	mkdir("./logs");
-	FILE *logs = fopen("./logs/logs.txt", "w");
-	if(logs == NULL) {
-		printf("Cannot open logs file\n");
+	FILE *logs;
+	if(start(logs) == -1 || logs == NULL) {
+		return -1;
+	}
+	printf("main");
+	printf("Adresse &logs: %p\n", &logs);
+	printf("Adresse logs : %p\n", logs);
+	char *ip = (char * ) calloc(19,1);
+	if(ip == NULL) {
+		printf("Cannot allocate memory for ip\n");
+		fprintf(logs,"Error while allocating memory for ip\n");
 		return -1;
 	}
 
-	time_t t;
-	time(&t);
-	fprintf(logs, "Starting server at %s, PID : %d\n", ctime(&t),getpid());
-	printf("Starting server at %sPID : %d\n", ctime(&t),getpid());
-
-	char *ip = (char * ) calloc(19,1);
 	int port = 0;
 
-	if(getipfromConf(ip,&port) == -1) {
-		printf("Cannot open config file\n");
-		fprintf(logs,"Error while opening config file \n");
-		return -1;
+	int close = 0;
+	while(!close){
+		if(getipfromConf(ip,&port) == -1) {
+			printf("Cannot open config file\n");
+			fprintf(logs,"Error while opening config file \n");
+			return -1;
+		}
+
+		printf("Outside : IP : %s, Port : %d\n", ip, port);
+		if(server(&logs, ip, &port) == -1) {
+			printf("Erreur connection : %d \n", WSAGetLastError());
+			return -1;
+		}
+		char* input = calloc(4,1);
+		printf("Do you want to close the server ? (Y/N)\n");
+		fgets(input,4,stdin);
+		if(strcmp(input,"Y") == 0) {
+			close = 1;
+		}
+		free(input);
 	}
-	printf("Outside : IP : %s, Port : %d\n", ip, port);
-
-
-
-	server(logs, ip, port);
-
+	fclose(logs);
 	free(ip);
 }
 
@@ -70,5 +84,23 @@ int getipfromConf(char *ip, int *port) {
 
 	free(line);
 	free(portc);
+	return 0;
+}
+
+int start(FILE *logs) {
+	mkdir("./logs");
+	logs = fopen("./logs/logs.txt", "w");
+	if(logs == NULL) {
+		printf("Cannot open logs file\n");
+		return -1;
+	}
+	printf("start");
+	printf("Adresse &logs: %p\n", &logs);
+	printf("Adresse logs : %p\n", logs);
+	//printf("Adresse *logs: %p\n", *logs);
+	time_t t;
+	time(&t);
+	fprintf(logs, "Starting server at %sPID : %d\n", ctime(&t),getpid());
+	printf("Starting server at %sPID : %d\n", ctime(&t),getpid());
 	return 0;
 }

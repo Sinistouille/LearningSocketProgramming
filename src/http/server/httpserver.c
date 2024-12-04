@@ -8,16 +8,20 @@
 
 volatile sig_atomic_t stop;
 
-int sendHttpResponse(SOCKET socket, FILE *logs);
+int sendHttpResponse(SOCKET socket, FILE **logs);
 
 BOOL WINAPI signalHandler(DWORD signal);
 
-int server(FILE *logs, char *ip, int port) {
+int server(FILE **logs, char *ip, int *port) {
     if (!SetConsoleCtrlHandler(signalHandler, TRUE)) {
         printf("\nERROR: Could not set control handler");
         return 1;
     }
 
+    printf("server");
+    printf("Adresse &logs: %p\n", &logs);
+    printf("Adresse logs : %p\n", logs);
+    printf("Adresse *logs: %p\n", *logs);
 
     //SERVEUR
     WSADATA data;
@@ -25,24 +29,25 @@ int server(FILE *logs, char *ip, int port) {
 
     SOCKET serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == INVALID_SOCKET) {
-        printf("Error creating socket : %d \n", WSAGetLastError());
-        return 0;
+        return -1;
     }
 
     struct sockaddr_in servar_addr;
     servar_addr.sin_addr.s_addr = inet_addr(ip);
     servar_addr.sin_family = AF_INET;
-    servar_addr.sin_port = htons(port);
+    servar_addr.sin_port = htons(*port);
     if (bind(serverSocket, (struct sockaddr *) &servar_addr, sizeof(servar_addr)) == SOCKET_ERROR) {
-        printf("Erreur connection : %d \n", WSAGetLastError());
         return -1;
     }
-    printf("Socket %llu bind to the adress %s:%d\n",serverSocket, ip, port);
-    fprintf(logs,"Socket %llu bind to the adress %s:%d\n",serverSocket, ip, port);
+    printf("Socket %llu bind to the adress %s:%d\n",serverSocket, ip, *port);
+    fprintf(*logs,"Socket %llu bind to the adress %s:%d\n",serverSocket, ip, *port);
+    fprintf(*logs, "Starting listening on socket : %llu", serverSocket);
 
-    listen(serverSocket, 10);
-    fprintf(logs, "Starting listening on socket : %llu", serverSocket);
-
+    if(listen(serverSocket, 10) == -1) {
+        return -1;
+    }
+    fprintf(*logs, "Starting listening on socket : %llu", serverSocket);
+    printf("Starting listening on socket : %llu", serverSocket);
     fd_set readfds;
     struct timeval timeout;
 
@@ -74,7 +79,7 @@ int server(FILE *logs, char *ip, int port) {
         int len;
         getpeername(clientSocket, &clientAddr, &len);
         printf("\n\nSocket client %llu connecte %s!,\n\n", clientSocket, inet_ntoa(((struct sockaddr_in *) &clientAddr)->sin_addr));
-        fprintf(logs,"\n\nSocket client %llu connecte %s!,\n\n", clientSocket, inet_ntoa(((struct sockaddr_in *) &clientAddr)->sin_addr));
+        fprintf(*logs,"\n\nSocket client %llu connecte %s!,\n\n", clientSocket, inet_ntoa(((struct sockaddr_in *) &clientAddr)->sin_addr));
         int bytes = 0;
         char *httpRequest = (char *) calloc(4,1);
         if (!httpRequest) {
@@ -107,22 +112,20 @@ int server(FILE *logs, char *ip, int port) {
                 int maxtime = 5;
                 if(difftime(t2, t1) > maxtime) {
                     printf("Difftime : %f\n", difftime(t2, t1));
-                    fprintf(logs,"Breaked the connection with socket %llu due to no response for (%ds)\n", clientSocket, maxtime);
+                    fprintf(*logs,"Breaked the connection with socket %llu due to no response for (%ds)\n", clientSocket, maxtime);
                     break;
                 }
                 // Timeout: check for shutdown signal
             }
             if(difftime(t2,t) > 10) {
                 printf("Difftime : %f\n", difftime(t2, t));
-                fprintf(logs, "Breaked the connection with socket %llu due to max. time elapsed %ds\n", clientSocket, 10);
+                fprintf(*logs, "Breaked the connection with socket %llu due to max. time elapsed %ds\n", clientSocket, 10);
             }
             int size = 100;
             char *buff = (char *) calloc(size + 1, 1);
             memset(buff,0 ,size);
 
             const int bytesReceived = recv(clientSocket, buff, size, 0);
-
-            printf("Received %d bytes\n", bytesReceived);
             if (bytesReceived > 0) {
                 time(&t1);
                 bytes += bytesReceived;
@@ -130,7 +133,6 @@ int server(FILE *logs, char *ip, int port) {
 
                 strncat(httpRequest, buff, bytesReceived);
                 if (strstr(httpRequest, "\r\n\r\n") != NULL) {
-                    printf("%s\n", httpRequest);
                     printf("\nEnd of HTTP request\n");
                     free(buff);
                     break;
@@ -148,7 +150,7 @@ int server(FILE *logs, char *ip, int port) {
             free(buff);
         }
         //printf("Received %d Bytes\n", bytes);
-        fprintf(logs,"Receiveid %d bytes from %llu\nRequest :\n%s", bytes, clientSocket, httpRequest);
+        fprintf(*logs,"Receiveid %d bytes from %llu\nRequest :\n%s", bytes, clientSocket, httpRequest);
         free(httpRequest);
         if (sendHttpResponse(clientSocket, logs) == SOCKET_ERROR) {
             printf("Error sending HTTP response: %d\n", WSAGetLastError());
@@ -158,19 +160,18 @@ int server(FILE *logs, char *ip, int port) {
         // Close client socket
         closesocket(clientSocket);
         printf("Client disconnected.\n");
-        fprintf(logs,"Client %llu disconnected.\n", clientSocket);
+        fprintf(*logs,"Client %llu disconnected.\n", clientSocket);
     }
     shutdown(serverSocket, 0);
 
     closesocket(serverSocket);
     WSACleanup();
     printf("Finishing & closing server \n");
-    fprintf(logs,"Shutdown server : closing his socket %llu\n", serverSocket);
-    fclose(logs);
+    fprintf(*logs,"Shutdown server : closing his socket %llu\n", serverSocket);
     return 0;
 }
 
-int sendHttpResponse(SOCKET socket, FILE *logs) {
+int sendHttpResponse(SOCKET socket, FILE **logs) {
 
     FILE *fHtml = fopen("./pages/index.html","r");
     if(fHtml == NULL) {
@@ -188,7 +189,6 @@ int sendHttpResponse(SOCKET socket, FILE *logs) {
         }
         strcat(html, line);
     }
-    fprintf(logs,"HTML File :\n %s",html);
 
     char *header = "HTTP/1.1 200 OK\r\n"
     "Content-Type: text/html\r\n"
@@ -202,8 +202,13 @@ int sendHttpResponse(SOCKET socket, FILE *logs) {
 
     int sendResult = send(socket, httpResponse, httpResponseSize, 0);
 
-    //printf("Sent HTTP response: \n%s\n", httpResponse);
-    fprintf(logs,"Sent HTTP response: \n%s\n\n", httpResponse);
+    printf("sendHttpResponse");
+    printf("Adresse &logs: %p\n", &logs);
+    printf("Adresse logs : %p\n", logs);
+    printf("Adresse *logs: %p\n", *logs);
+
+    printf("HTTP Response sent\n");
+    fprintf(*logs,"Sent HTTP response: \n%s\n\n", httpResponse);
     free(httpResponse);
     fclose(fHtml);
     free(html);
